@@ -1,5 +1,6 @@
 package com.poc.petshop.model;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,13 +13,12 @@ import java.time.LocalDate;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@MappedSuperclass
-public class Person extends BaseEntity {
-    private String firstName;
-    private String lastName;
-    private String middleName;
-    private String alias;
+@Entity
+@Table(name="vetenarians")
+public class VeterinaryDoctor extends Person{
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private Long veterinaryRegistryId;
     @Temporal(TemporalType.DATE)
-    private LocalDate dateOfBirth;
-    private String gender; //should be refactored to point to an Enum
+    private LocalDate qualificationDate;
 }
