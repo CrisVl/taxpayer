@@ -1,24 +1,27 @@
 package com.poc.petshop.model;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import com.poc.petshop.model.enums.Speciality;
+import lombok.*;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.UUID;
 
-@Getter
-@Setter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name="vetenarians")
-public class VeterinaryDoctor extends Person{
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Long veterinaryRegistryId;
+@Builder
+public class VeterinaryDoctor extends Employee implements Serializable {
+
+    @Column(unique=true)
+    private UUID veterinaryRegistryId;
     @Temporal(TemporalType.DATE)
     private LocalDate qualificationDate;
+
+    @Column(columnDefinition = "ENUM('CARDIOLOGY', 'DENTISTRY', 'NUTRITIONIST')")
+    @Enumerated(EnumType.STRING)
+    private Speciality speciality;
 }

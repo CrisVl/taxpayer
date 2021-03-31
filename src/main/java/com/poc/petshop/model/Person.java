@@ -1,19 +1,18 @@
 package com.poc.petshop.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.Set;
 
-@Getter
-@Setter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @MappedSuperclass
-public class Person extends BaseEntity {
+@Entity
+public abstract class Person extends BaseEntity implements Serializable {
     private String firstName;
     private String lastName;
     private String middleName;
@@ -21,4 +20,5 @@ public class Person extends BaseEntity {
     @Temporal(TemporalType.DATE)
     private LocalDate dateOfBirth;
     private String gender; //should be refactored to point to an Enum
+
 }
