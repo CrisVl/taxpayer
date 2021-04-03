@@ -6,10 +6,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
+import java.math.BigDecimal;
+import java.util.Date;
 
 
 @Data
@@ -18,6 +17,11 @@ import javax.persistence.OneToOne;
 @NoArgsConstructor
 @Builder
 public class Employee extends Person {
+
+    @Temporal(TemporalType.DATE)
+    private Date employmentDate;
+    private BigDecimal salary;
+
     @OneToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     private ContactDetails contactDetails;
 }

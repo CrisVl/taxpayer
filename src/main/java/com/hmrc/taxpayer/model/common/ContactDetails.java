@@ -1,6 +1,7 @@
 package com.hmrc.taxpayer.model.common;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.hmrc.taxpayer.model.BaseEntity;
 import com.hmrc.taxpayer.model.Employee;
 import com.hmrc.taxpayer.model.Person;
@@ -19,6 +20,8 @@ public class ContactDetails extends BaseEntity {
     private String mobileTelNo;
     private String homeTelNo;
     private String workTelNo;
-    @OneToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST}, fetch = FetchType.EAGER)
+
+    @OneToOne(mappedBy = "contactDetails", fetch = FetchType.EAGER)
+    @JsonIgnore
     private Employee employee;
 }

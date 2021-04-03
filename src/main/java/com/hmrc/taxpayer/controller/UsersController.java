@@ -1,10 +1,12 @@
 package com.hmrc.taxpayer.controller;
 
 import com.hmrc.taxpayer.model.Employee;
+import com.hmrc.taxpayer.model.Person;
 import com.hmrc.taxpayer.repository.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.Period;
 import java.util.List;
 
 @RestController
@@ -21,7 +23,6 @@ public class UsersController {
 
     @PostMapping(value = "/load")
     public List<Employee> persist(@RequestBody final Employee employee) {
-        Employee employee1 = Employee.builder().build();
         usersRepository.save(employee);
         return usersRepository.findAll();
     }

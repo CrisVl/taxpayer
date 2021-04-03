@@ -14,7 +14,11 @@ docker exec -t -i mysqldb /bin/bash
 
 mysql -u root -ppassword
 
-### mysql comands
+### create database
+
+CREATE DATABASE test2;
+
+### mysql commands
 
     show databases; //shows the databases
     create database taxpayer //creates a database
