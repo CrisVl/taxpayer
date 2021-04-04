@@ -22,6 +22,6 @@ public class Employee extends Person {
     private Date employmentDate;
     private BigDecimal salary;
 
-    @OneToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @OneToOne(cascade = CascadeType.ALL)
     private ContactDetails contactDetails;
 }
