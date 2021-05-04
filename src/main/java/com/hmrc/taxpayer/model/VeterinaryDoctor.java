@@ -10,7 +10,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @MappedSuperclass
-public abstract class Person extends BaseEntity {
+public abstract class VeterinaryDoctor extends BaseEntity {
     private String firstName;
     private String lastName;
     private String middleName;

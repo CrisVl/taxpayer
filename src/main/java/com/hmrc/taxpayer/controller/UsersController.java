@@ -1,37 +1,39 @@
 package com.hmrc.taxpayer.controller;
 
 import com.hmrc.taxpayer.model.Employee;
-import com.hmrc.taxpayer.services.UserService;
+import com.hmrc.taxpayer.model.VeterinaryDoctor;
+import com.hmrc.taxpayer.services.VeterinaryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Set;
 
 @RestController
 @RequestMapping(value = "/rest/users")
 public class UsersController {
 
-    private final UserService userService;
+    private final VeterinaryService userService;
 
     @Autowired
-    public UsersController(UserService userService) {
+    public UsersController(VeterinaryService userService) {
         this.userService = userService;
     }
 
     @GetMapping(value = "/all")
-    public List<Employee> getAll() {
-        return userService.returnAll();
+    public Set<VeterinaryDoctor> getAll() {
+        return userService.findAll();
     }
 
     @PostMapping(value = "/load")
-    public Employee persist(@RequestBody final Employee employee) {
-        return userService.saveEmployee(employee);
+    public VeterinaryDoctor persist(@RequestBody final VeterinaryDoctor veterinaryDoctor) {
+        return userService.save(veterinaryDoctor);
     }
 
     @GetMapping(value = "/getById")
     public ResponseEntity<Employee> findById(Long id) {
-        return userService.getById(id).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
+        return userService.findById(id).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
 
 }

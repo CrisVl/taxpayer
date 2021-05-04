@@ -16,7 +16,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Employee extends Person {
+public class Employee extends VeterinaryDoctor {
 
     @Temporal(TemporalType.DATE)
     private Date employmentDate;

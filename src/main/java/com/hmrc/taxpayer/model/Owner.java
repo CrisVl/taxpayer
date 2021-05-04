@@ -1,4 +1,4 @@
 package com.hmrc.taxpayer.model;
 
-public class Owner extends Person{
+public class Owner extends VeterinaryDoctor {
 }
